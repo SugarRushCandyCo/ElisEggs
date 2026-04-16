@@ -7,17 +7,17 @@
 
 <style>
 :root {
-  --bg: #f5f1e6;
-  --card: #fffaf0;
-  --text: #2e2e2e;
+  --bg: #f4efe6;
+  --card: #fffaf2;
   --accent: #6b8e23;
-  --brown: #8b5a2b;
+  --brown: #7a4f2b;
+  --text: #2a2a2a;
 }
 
 * {
+  box-sizing: border-box;
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
   font-family: Georgia, serif;
 }
 
@@ -29,27 +29,18 @@ body {
 nav {
   position: fixed;
   width: 100%;
-  background: rgba(245,241,230,0.9);
-  backdrop-filter: blur(8px);
-  padding: 15px 20px;
+  background: rgba(244,239,230,0.9);
+  padding: 15px;
   display: flex;
   justify-content: space-between;
   border-bottom: 1px solid #ddd;
 }
 
-nav h1 {
-  color: var(--brown);
-}
-
-nav a {
-  text-decoration: none;
-  color: var(--text);
-  margin-left: 15px;
-}
+nav h1 { color: var(--brown); }
 
 section {
   padding: 90px 20px;
-  max-width: 1000px;
+  max-width: 1100px;
   margin: auto;
 }
 
@@ -61,26 +52,22 @@ section {
 }
 
 .hero h2 {
-  font-size: 48px;
+  font-size: 50px;
   color: var(--brown);
-}
-
-.hero p {
-  margin: 10px 0;
 }
 
 .btn {
   background: var(--accent);
   color: white;
-  padding: 12px 18px;
+  padding: 12px;
   border: none;
   cursor: pointer;
-  margin-top: 10px;
+  margin-top: 15px;
 }
 
 .grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px,1fr));
+  grid-template-columns: repeat(auto-fit, minmax(250px,1fr));
   gap: 20px;
 }
 
@@ -91,26 +78,27 @@ section {
   border: 1px solid #ddd;
 }
 
-.status {
+.gallery img {
+  width: 100%;
+  border-radius: 10px;
+}
+
+form label {
   margin-top: 10px;
+  display: block;
   font-weight: bold;
 }
 
-.open { color: green; }
-.closed { color: red; }
-
-input, textarea {
+input, select, textarea {
   width: 100%;
   padding: 10px;
-  margin-top: 10px;
+  margin-top: 5px;
   border: 1px solid #ccc;
-  background: white;
 }
 
 footer {
   text-align: center;
   padding: 30px;
-  font-size: 14px;
 }
 </style>
 </head>
@@ -118,54 +106,67 @@ footer {
 <body>
 
 <nav>
-  <h1>Eli's Eggs 🥚</h1>
-  <div>
-    <a href="#about">About</a>
-    <a href="#eggs">Eggs</a>
-    <a href="#order">Order</a>
-  </div>
+  <h1>Eli's Eggs 🐔</h1>
 </nav>
 
 <section class="hero">
   <h2>Farm Fresh Eggs</h2>
-  <p>Raised right. Collected daily. Sold local.</p>
-  <button class="btn" onclick="scrollToSection('order')">Place Order</button>
-  <div id="statusText" class="status"></div>
+  <p>Locally raised. Naturally better.</p>
+  <button class="btn" onclick="scrollToSection('order')">Order Now</button>
 </section>
 
-<section id="about">
-  <h2>About Our Farm</h2>
-  <p style="margin-top:10px;">
-    At Eli's Eggs, our hens are raised with care right here at home.
-    We collect eggs daily to make sure you get the freshest, best-tasting eggs possible.
-  </p>
+<section>
+  <h2>Our Farm</h2>
+  <div class="grid gallery" style="margin-top:20px;">
+    <img src="egg1.jpg">
+    <img src="egg2.jpg">
+    <img src="egg3.jpg">
+  </div>
 </section>
 
-<section id="eggs">
-  <h2>Our Eggs</h2>
+<section>
+  <h2>Egg Options</h2>
   <div class="grid" style="margin-top:20px;">
     <div class="card">
-      <h3>Dozen Eggs</h3>
+      <h3>Dozen</h3>
       <p>$4</p>
     </div>
     <div class="card">
       <h3>Half Dozen</h3>
       <p>$2.50</p>
     </div>
-    <div class="card">
-      <h3>Fresh Guarantee</h3>
-      <p>Collected within 24 hours</p>
-    </div>
   </div>
 </section>
 
 <section id="order">
-  <h2>Order Eggs</h2>
+  <h2>Place an Order</h2>
 
   <form id="orderForm">
-    <input type="text" id="name" placeholder="Your Name" required>
-    <input type="text" id="amount" placeholder="How many cartons?" required>
-    <textarea id="message" placeholder="Pickup time / notes"></textarea>
+
+    <label>Name</label>
+    <input type="text" id="name" required>
+
+    <label>Contact (Phone or Discord)</label>
+    <input type="text" id="contact" required>
+
+    <label>Order Type</label>
+    <select id="type">
+      <option>Dozen</option>
+      <option>Half Dozen</option>
+    </select>
+
+    <label>Quantity</label>
+    <input type="number" id="quantity" min="1" required>
+
+    <label>Pickup Date</label>
+    <input type="date" id="date" required>
+
+    <label>Pickup Time</label>
+    <input type="time" id="time" required>
+
+    <label>Special Requests</label>
+    <textarea id="notes"></textarea>
+
     <button class="btn">Submit Order</button>
   </form>
 
@@ -173,45 +174,39 @@ footer {
 </section>
 
 <footer>
-  Fresh eggs from our farm to your table 🐔
+  🥚 Eli's Eggs — Fresh Every Day
 </footer>
 
 <script>
-const webhookURL = "https://discord.com/api/webhooks/1494134920409518262/0psSsZZvFwlDqy64gKNeU14SVXy9kZbRVxjIhHmCGdAad-VDG-kHFOhYTSHJm2b6SQTY";
+const webhookURL = "YOUR_WEBHOOK_HERE";
 
 // Scroll
 function scrollToSection(id){
   document.getElementById(id).scrollIntoView({behavior:"smooth"});
 }
 
-// Open/closed
-function updateStatus(){
-  const hour = new Date().getHours();
-  const el = document.getElementById("statusText");
-
-  if(hour >= 8 && hour <= 20){
-    el.textContent = "OPEN - Eggs Available Today";
-    el.className = "status open";
-  } else {
-    el.textContent = "CLOSED - Check back tomorrow";
-    el.className = "status closed";
-  }
-}
-updateStatus();
-
-// Form → Discord
+// Form → Discord EMBED
 document.getElementById("orderForm").addEventListener("submit", function(e){
   e.preventDefault();
 
-  const name = document.getElementById("name").value;
-  const amount = document.getElementById("amount").value;
-  const message = document.getElementById("message").value;
-
   const data = {
-    content: `🥚 **New Egg Order!**
-**Name:** ${name}
-**Amount:** ${amount}
-**Notes:** ${message || "None"}`
+    embeds: [{
+      title: "🥚 New Egg Order",
+      color: 5814783,
+      fields: [
+        { name: "Name", value: document.getElementById("name").value, inline: true },
+        { name: "Contact", value: document.getElementById("contact").value, inline: true },
+        { name: "Order Type", value: document.getElementById("type").value, inline: true },
+        { name: "Quantity", value: document.getElementById("quantity").value, inline: true },
+        { name: "Pickup Date", value: document.getElementById("date").value, inline: true },
+        { name: "Pickup Time", value: document.getElementById("time").value, inline: true },
+        { name: "Notes", value: document.getElementById("notes").value || "None" }
+      ],
+      footer: {
+        text: "Eli's Eggs Order System"
+      },
+      timestamp: new Date()
+    }]
   };
 
   fetch(webhookURL, {
@@ -220,11 +215,11 @@ document.getElementById("orderForm").addEventListener("submit", function(e){
     body: JSON.stringify(data)
   })
   .then(() => {
-    document.getElementById("formMessage").textContent = "Order sent! We'll have it ready.";
+    document.getElementById("formMessage").textContent = "Order sent!";
     document.getElementById("orderForm").reset();
   })
   .catch(() => {
-    document.getElementById("formMessage").textContent = "Error sending order. Try again.";
+    document.getElementById("formMessage").textContent = "Error sending order.";
   });
 });
 </script>

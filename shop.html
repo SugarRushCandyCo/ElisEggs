@@ -18,20 +18,25 @@
 </nav>
 
 <section>
-  <h2>Our Eggs</h2>
+  <h2>Choose Your Eggs</h2>
 
   <div class="grid">
-    <div class="card">
-      <h3>Dozen</h3>
-      <p>$4</p>
-    </div>
-    <div class="card">
-      <h3>Half Dozen</h3>
-      <p>$2.50</p>
-    </div>
-  </div>
 
+    <div class="card" onclick="selectProduct('Dozen')">
+      <h3>🥚 Dozen Eggs</h3>
+      <p>$4</p>
+      <button class="btn">Order This</button>
+    </div>
+
+    <div class="card" onclick="selectProduct('Half Dozen')">
+      <h3>🥚 Half Dozen</h3>
+      <p>$2.50</p>
+      <button class="btn">Order This</button>
+    </div>
+
+  </div>
 </section>
 
+<script src="script.js"></script>
 </body>
 </html>

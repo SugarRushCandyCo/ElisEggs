@@ -22,15 +22,10 @@ nav {
   position: sticky;
   top: 0;
   background: rgba(244,239,230,0.95);
+  padding: 15px 25px;
   display: flex;
   justify-content: space-between;
-  padding: 15px 25px;
   border-bottom: 1px solid #ddd;
-  z-index: 100;
-}
-
-nav h1 {
-  color: var(--brown);
 }
 
 nav a {
@@ -52,12 +47,17 @@ section {
   padding: 10px 15px;
   border: none;
   cursor: pointer;
+  transition: 0.2s;
+}
+
+.btn:hover {
+  transform: scale(1.05);
 }
 
 .grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px,1fr));
   gap: 20px;
+  grid-template-columns: repeat(auto-fit, minmax(250px,1fr));
 }
 
 .card {
@@ -65,11 +65,23 @@ section {
   padding: 20px;
   border-radius: 10px;
   border: 1px solid #ddd;
+  cursor: pointer;
+  transition: 0.2s;
 }
 
-.gallery img {
-  width: 100%;
-  border-radius: 10px;
+.card:hover {
+  transform: translateY(-5px);
+}
+
+.quantity {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.quantity button {
+  padding: 5px 10px;
 }
 
 input, select, textarea {
@@ -77,9 +89,4 @@ input, select, textarea {
   padding: 10px;
   margin-top: 5px;
   border: 1px solid #ccc;
-}
-
-footer {
-  text-align: center;
-  padding: 30px;
 }

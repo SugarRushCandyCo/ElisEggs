@@ -1,9 +1,31 @@
-const webhookURL = "https://discord.com/api/webhooks/1494134920409518262/0psSsZZvFwlDqy64gKNeU14SVXy9kZbRVxjIhHmCGdAad-VDG-kHFOhYTSHJm2b6SQTY";
+const webhookURL = "YOUR_WEBHOOK_HERE";
 
-function scrollToSection(id){
-  document.getElementById(id).scrollIntoView({behavior:"smooth"});
+// Store selected product
+function selectProduct(type){
+  localStorage.setItem("selectedEggType", type);
+  window.location.href = "order.html";
 }
 
+// Autofill order page
+window.addEventListener("DOMContentLoaded", () => {
+  const typeField = document.getElementById("type");
+  const saved = localStorage.getItem("selectedEggType");
+
+  if(typeField && saved){
+    typeField.value = saved;
+  }
+});
+
+// Quantity buttons
+function changeQty(amount){
+  const qty = document.getElementById("quantity");
+  let val = parseInt(qty.value) || 1;
+  val += amount;
+  if(val < 1) val = 1;
+  qty.value = val;
+}
+
+// Submit order
 function submitOrder(e){
   e.preventDefault();
 
@@ -12,13 +34,12 @@ function submitOrder(e){
       title: "🥚 New Egg Order",
       color: 5814783,
       fields: [
-        { name: "Name", value: document.getElementById("name").value, inline: true },
-        { name: "Contact", value: document.getElementById("contact").value, inline: true },
-        { name: "Order Type", value: document.getElementById("type").value, inline: true },
-        { name: "Quantity", value: document.getElementById("quantity").value, inline: true },
-        { name: "Pickup Date", value: document.getElementById("date").value, inline: true },
-        { name: "Pickup Time", value: document.getElementById("time").value, inline: true },
-        { name: "Notes", value: document.getElementById("notes").value || "None" }
+        { name: "Name", value: name.value, inline: true },
+        { name: "Contact", value: contact.value, inline: true },
+        { name: "Type", value: type.value, inline: true },
+        { name: "Quantity", value: quantity.value, inline: true },
+        { name: "Pickup", value: date.value + " " + time.value },
+        { name: "Notes", value: notes.value || "None" }
       ],
       footer: { text: "Eli's Eggs" },
       timestamp: new Date()
@@ -32,7 +53,7 @@ function submitOrder(e){
   })
   .then(() => {
     alert("Order sent!");
-    document.getElementById("orderForm").reset();
+    orderForm.reset();
   })
   .catch(() => alert("Error sending order"));
 }

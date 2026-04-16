@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Eli's Eggs</title>
+
+<style>
+:root {
+  --bg: #0a0a0a;
+  --card: #111;
+  --text: #f5f5f5;
+  --accent: #ffffff;
+  --muted: #777;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+}
+
+section {
+  padding: 80px 20px;
+  max-width: 1100px;
+  margin: auto;
+}
+
+/* NAV */
+nav {
+  position: fixed;
+  width: 100%;
+  background: rgba(0,0,0,0.8);
+  backdrop-filter: blur(10px);
+  padding: 15px 20px;
+  display: flex;
+  justify-content: space-between;
+  z-index: 1000;
+}
+
+nav h1 {
+  font-size: 18px;
+}
+
+nav a {
+  color: var(--text);
+  text-decoration: none;
+  margin-left: 20px;
+  font-size: 14px;
+}
+
+/* HERO */
+.hero {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.hero h2 {
+  font-size: 48px;
+  margin-bottom: 10px;
+}
+
+.hero p {
+  color: var(--muted);
+  margin-bottom: 20px;
+}
+
+.btn {
+  background: var(--accent);
+  color: black;
+  padding: 12px 20px;
+  border: none;
+  cursor: pointer;
+  width: fit-content;
+}
+
+/* CARDS */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px,1fr));
+  gap: 20px;
+}
+
+.card {
+  background: var(--card);
+  padding: 20px;
+  border-radius: 10px;
+}
+
+/* STATUS */
+.status {
+  font-size: 20px;
+  margin-top: 10px;
+}
+
+.open { color: #00ff88; }
+.closed { color: red; }
+
+/* FORM */
+input, textarea {
+  width: 100%;
+  margin-top: 10px;
+  padding: 10px;
+  background: black;
+  border: 1px solid #333;
+  color: white;
+}
+
+footer {
+  text-align: center;
+  padding: 40px;
+  color: var(--muted);
+}
+
+/* ANIMATION */
+.fade {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: 0.6s;
+}
+
+.fade.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+</style>
+</head>
+
+<body>
+
+<nav>
+  <h1>Eli's Eggs</h1>
+  <div>
+    <a href="#about">About</a>
+    <a href="#eggs">Eggs</a>
+    <a href="#order">Order</a>
+  </div>
+</nav>
+
+<section class="hero">
+  <h2>Fresh Eggs. Straight from the Hens.</h2>
+  <p>Local, clean, and collected daily.</p>
+  <button class="btn" onclick="scrollToSection('order')">Order Now</button>
+  <div class="status" id="statusText">Checking availability...</div>
+</section>
+
+<section id="about" class="fade">
+  <h2>About</h2>
+  <p style="margin-top:10px;">
+    Welcome to Eli's Eggs. We raise our hens locally and collect fresh eggs daily.
+    No chemicals. No factory farming. Just real eggs.
+  </p>
+</section>
+
+<section id="eggs" class="fade">
+  <h2>What We Offer</h2>
+  <div class="grid" style="margin-top:20px;">
+    <div class="card">
+      <h3>Dozen Eggs</h3>
+      <p>$4</p>
+    </div>
+    <div class="card">
+      <h3>Half Dozen</h3>
+      <p>$2.50</p>
+    </div>
+    <div class="card">
+      <h3>Farm Fresh Guarantee</h3>
+      <p>Collected same day or next morning.</p>
+    </div>
+  </div>
+</section>
+
+<section id="order" class="fade">
+  <h2>Order / Contact</h2>
+
+  <form onsubmit="submitForm(event)">
+    <input type="text" placeholder="Your Name" required>
+    <input type="text" placeholder="How many cartons?" required>
+    <textarea placeholder="Pickup time or message"></textarea>
+    <button class="btn" style="margin-top:10px;">Submit</button>
+  </form>
+
+  <p id="formMessage" style="margin-top:10px;"></p>
+</section>
+
+<section class="fade">
+  <h2>Reviews</h2>
+  <div class="grid" style="margin-top:20px;">
+    <div class="card">"Best eggs ever." ⭐⭐⭐⭐⭐</div>
+    <div class="card">"Super fresh and clean." ⭐⭐⭐⭐⭐</div>
+    <div class="card">"Way better than store eggs." ⭐⭐⭐⭐⭐</div>
+  </div>
+</section>
+
+<footer>
+  © 2026 Eli's Eggs
+</footer>
+
+<script>
+// SCROLL
+function scrollToSection(id){
+  document.getElementById(id).scrollIntoView({behavior:"smooth"});
+}
+
+// FADE IN
+const fades = document.querySelectorAll('.fade');
+window.addEventListener('scroll', () => {
+  fades.forEach(el => {
+    const top = el.getBoundingClientRect().top;
+    if(top < window.innerHeight - 50){
+      el.classList.add('show');
+    }
+  });
+});
+
+// STATUS (simulate open/closed)
+function updateStatus(){
+  const hour = new Date().getHours();
+  const el = document.getElementById("statusText");
+
+  if(hour >= 8 && hour <= 20){
+    el.textContent = "OPEN - Eggs Available";
+    el.className = "status open";
+  } else {
+    el.textContent = "CLOSED - Come back tomorrow";
+    el.className = "status closed";
+  }
+}
+updateStatus();
+
+// FORM
+function submitForm(e){
+  e.preventDefault();
+  document.getElementById("formMessage").textContent = "Order submitted!";
+}
+</script>
+
+</body>
+</html>

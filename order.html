@@ -3,78 +3,75 @@
 <head>
 <link rel="stylesheet" href="style.css">
 
-<link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css"/>
-<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
-
 <title>Order</title>
 </head>
 <body>
 
 <nav>
   <h2>Eli's Eggs 🥚</h2>
-  <div>
-    <a href="index.html">Home</a>
-    <a href="shop.html">Eggs</a>
-    <a href="order.html">Order</a>
-  </div>
 </nav>
 
 <section>
 
-  <div class="card">
-    <h2>Place Your Order</h2>
+  <div style="background:white; padding:30px; border-radius:10px;">
+    <h2>Order Eggs</h2>
 
-    <form id="orderForm" onsubmit="submitOrder(event)">
+    <form id="orderForm">
 
-      <div class="input-group">
-        <input id="name" required>
-        <label>Name</label>
-      </div>
+      <input id="name" placeholder="Name" required><br><br>
+      <input id="contact" placeholder="Phone Number" required><br><br>
 
-      <div class="input-group">
-        <input id="contact" required>
-        <label>Phone Number</label>
-      </div>
+      <select id="type">
+        <option>Dozen</option>
+        <option>Half Dozen</option>
+      </select><br><br>
 
-      <div class="input-group">
-        <select id="type" onchange="updateTotal()">
-          <option>Dozen</option>
-          <option>Half Dozen</option>
-        </select>
-      </div>
+      <input id="quantity" type="number" value="1"><br><br>
 
-      <div class="input-group">
-        <input id="quantity" type="number" value="1" onchange="updateTotal()">
-        <label>Quantity</label>
-      </div>
+      <input id="date" type="date"><br><br>
+      <input id="time" type="time"><br><br>
 
-      <div id="total" class="total">$0.00</div>
+      <textarea id="notes" placeholder="Notes"></textarea><br><br>
 
-      <div class="input-group">
-        <input id="date" type="date" required>
-      </div>
-
-      <div class="input-group">
-        <input id="time" type="time" required>
-      </div>
-
-      <div class="input-group">
-        <textarea id="notes"></textarea>
-        <label>Notes</label>
-      </div>
-
-      <h3>Pickup Location</h3>
-      <div id="map"></div>
-
-      <button class="btn">Submit Order</button>
-
-      <div id="status" class="status-msg"></div>
+      <button type="submit">Submit Order</button>
 
     </form>
+
+    <p id="status"></p>
+
   </div>
 
 </section>
 
-<script src="script.js"></script>
+<script>
+const webhookURL = "PASTE YOUR WEBHOOK HERE";
+
+document.getElementById("orderForm").addEventListener("submit", async function(e){
+  e.preventDefault();
+
+  const status = document.getElementById("status");
+  status.textContent = "Sending...";
+
+  try {
+    const res = await fetch(webhookURL, {
+      method: "POST",
+      headers: {"Content-Type": "application/json"},
+      body: JSON.stringify({
+        content: "TEST ORDER FROM WEBSITE"
+      })
+    });
+
+    if(res.ok){
+      status.textContent = "✅ SENT SUCCESSFULLY";
+    } else {
+      status.textContent = "❌ FAILED (BAD RESPONSE)";
+    }
+
+  } catch (err){
+    status.textContent = "❌ ERROR (LIKELY BLOCKED)";
+  }
+});
+</script>
+
 </body>
 </html>

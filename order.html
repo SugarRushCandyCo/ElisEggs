@@ -3,7 +3,6 @@
 <head>
 <link rel="stylesheet" href="style.css">
 
-<!-- Leaflet Map -->
 <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css"/>
 <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
 
@@ -12,49 +11,67 @@
 <body>
 
 <nav>
-  <h1>Eli's Eggs 🐔</h1>
+  <h2>Eli's Eggs 🥚</h2>
   <div>
     <a href="index.html">Home</a>
-    <a href="about.html">About</a>
     <a href="shop.html">Eggs</a>
-    <a href="gallery.html">Gallery</a>
     <a href="order.html">Order</a>
   </div>
 </nav>
 
 <section>
-  <h2>Advanced Order System</h2>
 
-  <form id="orderForm" onsubmit="submitOrder(event)">
+  <div class="card">
+    <h2>Place Your Order</h2>
 
-    <input id="name" placeholder="Name" required>
-    <input id="contact" placeholder="Phone Number" required>
+    <form id="orderForm" onsubmit="submitOrder(event)">
 
-    <select id="type" onchange="updateTotal()">
-      <option>Dozen</option>
-      <option>Half Dozen</option>
-    </select>
+      <div class="input-group">
+        <input id="name" required>
+        <label>Name</label>
+      </div>
 
-    <div class="quantity">
-      <button type="button" onclick="changeQty(-1)">-</button>
-      <input id="quantity" type="number" value="1" onchange="updateTotal()">
-      <button type="button" onclick="changeQty(1)">+</button>
-    </div>
+      <div class="input-group">
+        <input id="contact" required>
+        <label>Phone Number</label>
+      </div>
 
-    <div id="total" class="total">Total: $0.00</div>
+      <div class="input-group">
+        <select id="type" onchange="updateTotal()">
+          <option>Dozen</option>
+          <option>Half Dozen</option>
+        </select>
+      </div>
 
-    <input id="date" type="date" required>
-    <input id="time" type="time" required>
+      <div class="input-group">
+        <input id="quantity" type="number" value="1" onchange="updateTotal()">
+        <label>Quantity</label>
+      </div>
 
-    <textarea id="notes" placeholder="Notes"></textarea>
+      <div id="total" class="total">$0.00</div>
 
-    <h3>Pickup Location</h3>
-    <div id="map"></div>
+      <div class="input-group">
+        <input id="date" type="date" required>
+      </div>
 
-    <button class="btn">Submit Order</button>
-  </form>
+      <div class="input-group">
+        <input id="time" type="time" required>
+      </div>
 
-  <div id="history" class="history"></div>
+      <div class="input-group">
+        <textarea id="notes"></textarea>
+        <label>Notes</label>
+      </div>
+
+      <h3>Pickup Location</h3>
+      <div id="map"></div>
+
+      <button class="btn">Submit Order</button>
+
+      <div id="status" class="status-msg"></div>
+
+    </form>
+  </div>
 
 </section>
 

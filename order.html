@@ -2,6 +2,11 @@
 <html>
 <head>
 <link rel="stylesheet" href="style.css">
+
+<!-- Leaflet Map -->
+<link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css"/>
+<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+
 <title>Order</title>
 </head>
 <body>
@@ -18,32 +23,38 @@
 </nav>
 
 <section>
-  <h2>Place Your Order</h2>
+  <h2>Advanced Order System</h2>
 
   <form id="orderForm" onsubmit="submitOrder(event)">
 
     <input id="name" placeholder="Name" required>
-
     <input id="contact" placeholder="Phone Number" required>
 
-    <select id="type">
+    <select id="type" onchange="updateTotal()">
       <option>Dozen</option>
       <option>Half Dozen</option>
     </select>
 
     <div class="quantity">
       <button type="button" onclick="changeQty(-1)">-</button>
-      <input id="quantity" type="number" value="1">
+      <input id="quantity" type="number" value="1" onchange="updateTotal()">
       <button type="button" onclick="changeQty(1)">+</button>
     </div>
+
+    <div id="total" class="total">Total: $0.00</div>
 
     <input id="date" type="date" required>
     <input id="time" type="time" required>
 
-    <textarea id="notes" placeholder="Extra notes"></textarea>
+    <textarea id="notes" placeholder="Notes"></textarea>
+
+    <h3>Pickup Location</h3>
+    <div id="map"></div>
 
     <button class="btn">Submit Order</button>
   </form>
+
+  <div id="history" class="history"></div>
 
 </section>
 

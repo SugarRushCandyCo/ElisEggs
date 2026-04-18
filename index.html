@@ -341,6 +341,12 @@
     display: block;
     border-radius: 8px;
     background: var(--cream-dark);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Caveat', cursive;
+    font-size: 2rem;
+    color: var(--brown-mid);
   }
   .about-badge {
     position: absolute;
@@ -414,6 +420,8 @@
     display: flex; align-items: center; justify-content: center;
     position: relative;
     overflow: hidden;
+    background: var(--cream);
+    font-size: 5rem;
   }
   .egg-card-badge {
     position: absolute; top: 16px; right: 16px;
@@ -644,6 +652,11 @@
     overflow: hidden;
     position: relative;
   }
+  .map-placeholder span {
+    font-family: 'Caveat', cursive;
+    font-size: 1.5rem;
+    color: var(--brown);
+  }
 
   /* ── CONTACT ── */
   #contact {
@@ -691,6 +704,7 @@
     box-shadow: 0 0 0 4px rgba(196,68,28,0.1);
   }
   .form-group textarea { resize: vertical; min-height: 120px; }
+  .submit-btn { width: 100%; margin-top: 10px; font-size: 1.2rem; }
 
   /* ── FOOTER ── */
   footer {
@@ -855,11 +869,9 @@
 </head>
 <body>
 
-<!-- CURSOR -->
 <div id="cursor"></div>
 <div id="cursor-dot"></div>
 
-<!-- NAVIGATION -->
 <nav id="navbar">
   <a href="#" class="nav-logo"><span class="egg-icon">🥚</span> Eli's Eggs</a>
   <ul class="nav-links">
@@ -871,7 +883,6 @@
   </ul>
 </nav>
 
-<!-- HERO -->
 <section id="hero">
   <div class="hero-bg"></div>
   <div class="hero-straw"></div>
@@ -896,7 +907,6 @@
   <div class="hero-visual">
     <div class="egg-basket-wrap">
       <svg viewBox="0 0 420 420" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%">
-        <!-- Sun rays -->
         <g opacity="0.25">
           <line x1="210" y1="60" x2="210" y2="20" stroke="#E8A827" stroke-width="3" stroke-linecap="round"/>
           <line x1="265" y1="75" x2="285" y2="42" stroke="#E8A827" stroke-width="3" stroke-linecap="round"/>
@@ -904,22 +914,17 @@
           <line x1="302" y1="110" x2="332" y2="90" stroke="#E8A827" stroke-width="3" stroke-linecap="round"/>
           <line x1="118" y1="110" x2="88" y2="90" stroke="#E8A827" stroke-width="3" stroke-linecap="round"/>
         </g>
-        <!-- Sun -->
         <circle cx="210" cy="100" r="52" fill="#F5C842" opacity="0.22"/>
         <circle cx="210" cy="100" r="36" fill="#F5C842" opacity="0.35"/>
-        <!-- Grassy ground -->
         <ellipse cx="210" cy="380" rx="200" ry="30" fill="#4A6741" opacity="0.15"/>
-        <!-- Grass blades -->
         <g fill="#3D5C2F" opacity="0.4">
           <ellipse cx="80" cy="340" rx="5" ry="22" transform="rotate(-10,80,340)"/>
           <ellipse cx="100" cy="335" rx="5" ry="28" transform="rotate(5,100,335)"/>
           <ellipse cx="320" cy="340" rx="5" ry="22" transform="rotate(10,320,340)"/>
           <ellipse cx="340" cy="335" rx="5" ry="28" transform="rotate(-5,340,335)"/>
         </g>
-        <!-- Basket body -->
         <path d="M100 290 Q100 370 210 370 Q320 370 320 290 L305 220 L115 220 Z"
               fill="#8B5E3C" opacity="0.85"/>
-        <!-- Basket weave -->
         <g stroke="#6B4226" stroke-width="1.5" opacity="0.5">
           <line x1="135" y1="225" x2="120" y2="360"/>
           <line x1="160" y1="222" x2="152" y2="362"/>
@@ -928,56 +933,39 @@
           <line x1="235" y1="221" x2="238" y2="363"/>
           <line x1="260" y1="222" x2="268" y2="362"/>
           <line x1="285" y1="225" x2="300" y2="360"/>
-          <!-- horizontal bands -->
           <path d="M110 250 Q210 240 310 250" fill="none"/>
           <path d="M107 280 Q210 270 313 280" fill="none"/>
           <path d="M106 310 Q210 300 314 310" fill="none"/>
           <path d="M107 338 Q210 330 313 338" fill="none"/>
         </g>
-        <!-- Basket rim -->
         <path d="M100 220 Q210 200 320 220" stroke="#C4441C" stroke-width="6" fill="none" stroke-linecap="round"/>
-        <!-- Basket handle -->
         <path d="M150 220 Q150 160 210 155 Q270 150 270 220"
               stroke="#8B5E3C" stroke-width="12" fill="none" stroke-linecap="round" opacity="0.8"/>
-        <!-- Main egg 1 (center) -->
         <g class="floating-egg" style="left:155px;top:152px">
           <ellipse cx="210" cy="198" rx="32" ry="40" fill="#F7EDD8" stroke="#E8D4A8" stroke-width="1.5"/>
           <ellipse cx="210" cy="198" rx="10" ry="12" fill="rgba(232,168,39,0.15)"/>
         </g>
-        <!-- Main egg 2 (left) -->
         <g class="floating-egg" style="left:110px;top:148px">
           <ellipse cx="165" cy="204" rx="28" ry="35" fill="#D4956A" stroke="#C4804A" stroke-width="1.5" transform="rotate(-12,165,204)"/>
         </g>
-        <!-- Main egg 3 (right) -->
         <g class="floating-egg" style="left:198px;top:145px">
           <ellipse cx="255" cy="202" rx="28" ry="36" fill="#F0DFC0" stroke="#DEC890" stroke-width="1.5" transform="rotate(10,255,202)"/>
         </g>
-        <!-- Small egg peeking -->
         <ellipse cx="185" cy="220" rx="22" ry="18" fill="#E8C8A0" stroke="#D4B478" stroke-width="1.5"/>
-        <!-- Chicken standing right -->
         <g transform="translate(330,270) scale(0.75)">
-          <!-- body -->
           <ellipse cx="30" cy="40" rx="26" ry="22" fill="#E8C87A"/>
-          <!-- head -->
           <circle cx="55" cy="20" r="14" fill="#E8C87A"/>
-          <!-- beak -->
           <polygon points="65,18 72,22 65,26" fill="#C4441C"/>
-          <!-- comb -->
           <path d="M50,8 Q53,2 56,8 Q59,2 62,8" fill="#C4441C" stroke="none"/>
-          <!-- eye -->
           <circle cx="58" cy="18" r="2.5" fill="#2A1508"/>
-          <!-- wing -->
           <ellipse cx="22" cy="38" rx="16" ry="9" fill="#D4AA5A" transform="rotate(-15,22,38)"/>
-          <!-- legs -->
           <line x1="25" y1="58" x2="20" y2="74" stroke="#C4441C" stroke-width="3" stroke-linecap="round"/>
           <line x1="35" y1="58" x2="38" y2="74" stroke="#C4441C" stroke-width="3" stroke-linecap="round"/>
-          <!-- feet -->
           <line x1="20" y1="74" x2="12" y2="76" stroke="#C4441C" stroke-width="2.5" stroke-linecap="round"/>
           <line x1="20" y1="74" x2="20" y2="78" stroke="#C4441C" stroke-width="2.5" stroke-linecap="round"/>
           <line x1="38" y1="74" x2="46" y2="76" stroke="#C4441C" stroke-width="2.5" stroke-linecap="round"/>
           <line x1="38" y1="74" x2="38" y2="78" stroke="#C4441C" stroke-width="2.5" stroke-linecap="round"/>
         </g>
-        <!-- Tiny stars / sparkles -->
         <g fill="#E8A827" opacity="0.5">
           <circle cx="70" cy="180" r="3"/>
           <circle cx="350" cy="200" r="2"/>
@@ -989,7 +977,6 @@
   </div>
 </section>
 
-<!-- MARQUEE -->
 <div class="marquee-wrap">
   <div class="marquee-inner">
     <span class="marquee-item">🥚 Farm Fresh Daily</span>
@@ -1007,195 +994,91 @@
     <span class="marquee-item">🌿 No Hormones</span>
     <span class="marquee-item">☀️ Pasture Raised</span>
     <span class="marquee-item">❤️ Family Owned</span>
-    <span class="marquee-item">🥚 Farm Fresh Daily</span>
-    <span class="marquee-item">🐔 Free-Range Hens</span>
-    <span class="marquee-item">🌿 No Hormones</span>
-    <span class="marquee-item">☀️ Pasture Raised</span>
-    <span class="marquee-item">❤️ Family Owned</span>
   </div>
 </div>
 
-<!-- STATS -->
-<div id="stats">
-  <div class="stat-item reveal">
-    <span class="stat-num" data-target="5">0</span>
+<section id="stats" class="reveal">
+  <div class="stat-item">
+    <span class="stat-num">50+</span>
     <span class="stat-label">Happy Hens</span>
     <div class="stat-divider"></div>
   </div>
-  <div class="stat-item reveal" style="transition-delay:0.1s">
-    <span class="stat-num" data-target="35">0</span>
-    <span class="stat-label">Eggs Per Week</span>
+  <div class="stat-item">
+    <span class="stat-num">100%</span>
+    <span class="stat-label">Pasture Raised</span>
     <div class="stat-divider"></div>
   </div>
-  <div class="stat-item reveal" style="transition-delay:0.2s">
-    <span class="stat-num" data-target="12">0</span>
-    <span class="stat-label">Years Running</span>
+  <div class="stat-item">
+    <span class="stat-num">Daily</span>
+    <span class="stat-label">Fresh Gathered</span>
     <div class="stat-divider"></div>
   </div>
-  <div class="stat-item reveal" style="transition-delay:0.3s">
-    <span class="stat-num" data-target="100">0</span>
-    <span class="stat-label">% Natural Feed</span>
+  <div class="stat-item">
+    <span class="stat-num">NY</span>
+    <span class="stat-label">Ithaca Local</span>
   </div>
-</div>
+</section>
 
-<!-- ABOUT -->
-<section id="about">
+<section id="about" class="reveal">
   <div class="about-img-wrap reveal-left">
-    <svg class="about-farm-svg" viewBox="0 0 560 380" xmlns="http://www.w3.org/2000/svg">
-      <!-- Sky gradient -->
-      <defs>
-        <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0%" stop-color="#D4E8F5"/>
-          <stop offset="100%" stop-color="#F7EDD8"/>
-        </linearGradient>
-        <linearGradient id="grass" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0%" stop-color="#6A8C56"/>
-          <stop offset="100%" stop-color="#3D5C2F"/>
-        </linearGradient>
-      </defs>
-      <rect width="560" height="380" fill="url(#sky)"/>
-      <!-- Ground -->
-      <rect x="0" y="270" width="560" height="110" fill="url(#grass)" opacity="0.8"/>
-      <!-- Sun -->
-      <circle cx="480" cy="70" r="44" fill="#F5C842" opacity="0.7"/>
-      <circle cx="480" cy="70" r="34" fill="#F5C842" opacity="0.5"/>
-      <!-- Clouds -->
-      <g fill="white" opacity="0.75">
-        <ellipse cx="120" cy="80" rx="55" ry="22"/>
-        <ellipse cx="155" cy="72" rx="38" ry="18"/>
-        <ellipse cx="85" cy="76" rx="30" ry="16"/>
-        <ellipse cx="320" cy="95" rx="45" ry="18"/>
-        <ellipse cx="355" cy="88" rx="30" ry="14"/>
-      </g>
-      <!-- Barn -->
-      <rect x="50" y="160" width="130" height="120" fill="#C4441C" rx="4"/>
-      <polygon points="35,165 115,105 195,165" fill="#8B1A1A"/>
-      <rect x="90" y="220" width="50" height="60" fill="#5C3317"/>
-      <!-- Barn window -->
-      <rect x="62" y="178" width="36" height="28" fill="#F5C842" rx="4" opacity="0.8"/>
-      <line x1="80" y1="178" x2="80" y2="206" stroke="#5C3317" stroke-width="2"/>
-      <line x1="62" y1="192" x2="98" y2="192" stroke="#5C3317" stroke-width="2"/>
-      <!-- Barn silo -->
-      <rect x="186" y="190" width="38" height="90" fill="#E0C890" rx="4"/>
-      <ellipse cx="205" cy="190" rx="19" ry="10" fill="#C8B070"/>
-      <!-- Fence -->
-      <g stroke="#8B5E3C" stroke-width="3" stroke-linecap="round">
-        <line x1="220" y1="275" x2="220" y2="315"/>
-        <line x1="250" y1="275" x2="250" y2="315"/>
-        <line x1="280" y1="275" x2="280" y2="315"/>
-        <line x1="310" y1="275" x2="310" y2="315"/>
-        <line x1="340" y1="275" x2="340" y2="315"/>
-        <line x1="370" y1="275" x2="370" y2="315"/>
-        <line x1="400" y1="275" x2="400" y2="315"/>
-        <line x1="430" y1="275" x2="430" y2="315"/>
-        <line x1="218" y1="284" x2="432" y2="284"/>
-        <line x1="218" y1="305" x2="432" y2="305"/>
-      </g>
-      <!-- Chickens -->
-      <g transform="translate(300,240) scale(0.85)">
-        <ellipse cx="20" cy="28" rx="18" ry="15" fill="#F0D090"/>
-        <circle cx="34" cy="15" r="10" fill="#F0D090"/>
-        <polygon points="41,13 47,16 41,19" fill="#C4441C"/>
-        <path d="M30,7 Q33,2 36,7 Q39,2 42,7" fill="#C4441C"/>
-        <circle cx="37" cy="12" r="2" fill="#2A1508"/>
-      </g>
-      <g transform="translate(340,248) scale(0.7)">
-        <ellipse cx="20" cy="28" rx="18" ry="15" fill="#C4854A"/>
-        <circle cx="34" cy="15" r="10" fill="#C4854A"/>
-        <polygon points="41,13 47,16 41,19" fill="#C4441C"/>
-        <path d="M30,7 Q33,2 36,7" fill="#C4441C"/>
-        <circle cx="37" cy="12" r="2" fill="#2A1508"/>
-      </g>
-      <!-- Trees -->
-      <g transform="translate(430,150)">
-        <rect x="22" y="60" width="16" height="60" fill="#6B4226"/>
-        <ellipse cx="30" cy="50" rx="32" ry="52" fill="#4A6741" opacity="0.9"/>
-        <ellipse cx="30" cy="40" rx="24" ry="38" fill="#5A7A50" opacity="0.7"/>
-      </g>
-      <g transform="translate(480,165)">
-        <rect x="14" y="50" width="12" height="50" fill="#6B4226"/>
-        <ellipse cx="20" cy="40" rx="22" ry="38" fill="#4A6741" opacity="0.9"/>
-      </g>
-      <!-- Flower accents -->
-      <g opacity="0.7">
-        <circle cx="240" cy="270" r="4" fill="#F5C842"/>
-        <circle cx="260" cy="268" r="3" fill="#C4441C"/>
-        <circle cx="390" cy="271" r="4" fill="#F5C842"/>
-        <circle cx="415" cy="269" r="3" fill="#C4441C"/>
-      </g>
-    </svg>
+    <div class="about-farm-svg">🌿 ☀️ 🐔</div>
     <div class="about-badge">
-      <div class="about-badge-text">Since 2013 · Est. 2013 · Local Farm ·&nbsp;</div>
+      <span class="about-badge-text">Locally<br>Sourced</span>
     </div>
   </div>
-
-  <div class="reveal-right">
-    <span class="section-tag">Our Story</span>
-    <h2 class="section-title">Small Farm,<br>Big Heart</h2>
+  <div class="about-text reveal-right">
+    <span class="section-tag">Our Philosophy</span>
+    <h2 class="section-title">Happy Hens Make the Best Eggs</h2>
     <p class="section-sub">
-      Eli started with just six hens and a dream. Over a decade later, our flock has grown — but our values haven't. Every egg is collected by hand each morning, washed gently, and ready for your family before noon.
+      We believe in doing things the right way. Our hens roam freely on green pastures, soaking up the sun and foraging for their natural diet. This dedication to animal welfare and sustainable farming translates directly into the rich, vibrant yolks and superior taste of our eggs.
     </p>
-    <p class="section-sub" style="margin-top:16px;">
-      Our hens roam freely on open pasture, eating natural grasses, insects, and non-GMO supplemental feed. No shortcuts. No compromises. Just real eggs the way nature intended.
-    </p>
-
     <div class="about-features">
-      <div class="feature-pill"><span>🌱</span> Non-GMO Feed</div>
-      <div class="feature-pill"><span>🏡</span> Family Owned</div>
-      <div class="feature-pill"><span>🐔</span> Free Roaming</div>
-      <div class="feature-pill"><span>💧</span> No Antibiotics</div>
-      <div class="feature-pill"><span>☀️</span> Daily Fresh</div>
-      <div class="feature-pill"><span>♻️</span> Carton Return</div>
+      <div class="feature-pill"><span>🌱</span> All Natural Diet</div>
+      <div class="feature-pill"><span>🏡</span> Roaming Free</div>
+      <div class="feature-pill"><span>🤝</span> Community First</div>
+      <div class="feature-pill"><span>🚜</span> Hand Gathered</div>
     </div>
   </div>
 </section>
 
-<!-- EGGS SECTION -->
-<section id="eggs">
-  <div class="eggs-header reveal">
-    <span class="section-tag">What We Offer</span>
-    <h2 class="section-title">Fresh Brown Eggs</h2>
-    <p class="section-sub">Rich, warm terracotta shells from our happy little flock of five. Simple as that.</p>
+<section id="eggs" class="reveal">
+  <div class="eggs-header">
+    <span class="section-tag">Fresh Finds</span>
+    <h2 class="section-title">From Coop to Carton</h2>
+    <p class="section-sub">Choose from our daily selection. Whether you're baking a cake or scrambling breakfast, we have the perfect dozen for you.</p>
   </div>
-  <div class="eggs-grid" style="grid-template-columns: repeat(2, 1fr); max-width: 760px; margin: 0 auto;">
-    <div class="egg-card reveal" style="transition-delay:0s">
-      <div class="egg-card-visual" style="background: linear-gradient(135deg,#E8D8C8,#D4B898);">
-        <svg viewBox="0 0 160 160" width="140" height="140">
-          <ellipse cx="50" cy="90" rx="28" ry="36" fill="#C8906A" stroke="#B07850" stroke-width="2" transform="rotate(-8,50,90)"/>
-          <ellipse cx="80" cy="85" rx="30" ry="38" fill="#C8906A" stroke="#B07850" stroke-width="2"/>
-          <ellipse cx="110" cy="90" rx="28" ry="36" fill="#C8906A" stroke="#B07850" stroke-width="2" transform="rotate(8,110,90)"/>
-          <ellipse cx="66" cy="72" rx="8" ry="12" fill="rgba(255,255,255,0.25)" transform="rotate(-20,66,72)"/>
-        </svg>
-        <div class="egg-card-badge">Half Dozen</div>
-      </div>
+  <div class="eggs-grid">
+    <div class="egg-card reveal">
+      <div class="egg-card-visual">🥚</div>
+      <div class="egg-card-badge">Most Popular</div>
       <div class="egg-card-body">
-        <div class="egg-name">Brown Eggs &mdash; 6</div>
-        <p class="egg-desc">Six beautiful brown eggs, hand-collected that morning from our five hens. Perfect if you just need a little taste of the farm.</p>
+        <h3 class="egg-name">Classic Brown Dozen</h3>
+        <p class="egg-desc">A full dozen of our large, farm-fresh brown eggs. Rich yolks, thick shells, perfect for everything.</p>
         <div class="egg-footer">
-          <div class="egg-price">$3 <span>/ half dozen</span></div>
+          <div class="egg-price">$6.00 <span>/ dozen</span></div>
           <a href="#contact" class="btn-small">Order</a>
         </div>
       </div>
     </div>
-
-    <div class="egg-card reveal" style="transition-delay:0.15s">
-      <div class="egg-card-visual" style="background: linear-gradient(135deg,#D4C0A8,#C0A888);">
-        <svg viewBox="0 0 160 160" width="140" height="140">
-          <ellipse cx="42" cy="100" rx="24" ry="30" fill="#C8906A" stroke="#B07850" stroke-width="2" transform="rotate(-6,42,100)"/>
-          <ellipse cx="80" cy="95" rx="26" ry="33" fill="#B87848" stroke="#A06030" stroke-width="2"/>
-          <ellipse cx="118" cy="100" rx="24" ry="30" fill="#C8906A" stroke="#B07850" stroke-width="2" transform="rotate(6,118,100)"/>
-          <ellipse cx="42" cy="62" rx="22" ry="28" fill="#C8906A" stroke="#B07850" stroke-width="1.5" transform="rotate(-6,42,62)"/>
-          <ellipse cx="80" cy="57" rx="24" ry="30" fill="#B87848" stroke="#A06030" stroke-width="1.5"/>
-          <ellipse cx="118" cy="62" rx="22" ry="28" fill="#C8906A" stroke="#B07850" stroke-width="1.5" transform="rotate(6,118,62)"/>
-          <ellipse cx="68" cy="50" rx="7" ry="10" fill="rgba(255,255,255,0.22)" transform="rotate(-20,68,50)"/>
-        </svg>
-        <div class="egg-card-badge">Best Value</div>
-      </div>
+    <div class="egg-card reveal" style="transition-delay: 0.1s;">
+      <div class="egg-card-visual">🥚🥚</div>
       <div class="egg-card-body">
-        <div class="egg-name">Brown Eggs &mdash; 12</div>
-        <p class="egg-desc">A full dozen of our farm-fresh brown eggs. Rich golden yolks, collected by hand every morning. Stock the fridge right.</p>
+        <h3 class="egg-name">Half Dozen</h3>
+        <p class="egg-desc">Just need a few? Grab a half dozen of our large brown eggs. Great for smaller households.</p>
         <div class="egg-footer">
-          <div class="egg-price">$5 <span>/ dozen</span></div>
+          <div class="egg-price">$3.50 <span>/ 6 pack</span></div>
+          <a href="#contact" class="btn-small">Order</a>
+        </div>
+      </div>
+    </div>
+    <div class="egg-card reveal" style="transition-delay: 0.2s;">
+      <div class="egg-card-visual">🧺</div>
+      <div class="egg-card-badge">Bulk Saver</div>
+      <div class="egg-card-body">
+        <h3 class="egg-name">The Baker's Flat</h3>
+        <p class="egg-desc">A full flat of 30 farm-fresh eggs. The ideal choice for big families, frequent bakers, or meal preppers.</p>
+        <div class="egg-footer">
+          <div class="egg-price">$14.00 <span>/ flat</span></div>
           <a href="#contact" class="btn-small">Order</a>
         </div>
       </div>
@@ -1203,307 +1086,199 @@
   </div>
 </section>
 
-<!-- HOW IT WORKS -->
-<section id="process">
-  <div class="reveal">
-    <span class="section-tag">The Process</span>
-    <h2 class="section-title">From Our Hens to<br>Your Hands</h2>
-    <p class="section-sub">We keep it simple because nature keeps it simple. No middleman, no cold storage, no mystery.</p>
-  </div>
+<section id="process" class="reveal">
+  <span class="section-tag">Farm To Table</span>
+  <h2 class="section-title">How It Works</h2>
+  <p class="section-sub">Getting farm-fresh eggs has never been easier. Just place your order and pick it up right from our porch.</p>
+  
   <div class="steps-row">
-    <div class="step reveal" style="transition-delay:0.0s">
-      <div class="step-num">🌅</div>
-      <div class="step-title">Dawn Collection</div>
-      <p class="step-text">Eli walks the coops at sunrise, hand-collecting each egg from the nesting boxes while the hens are out in the pasture.</p>
+    <div class="step reveal">
+      <div class="step-num">1</div>
+      <h3 class="step-title">Place Order</h3>
+      <p class="step-text">Fill out the form below to let us know how many eggs you need today or tomorrow.</p>
     </div>
-    <div class="step reveal" style="transition-delay:0.15s">
-      <div class="step-num">🚿</div>
-      <div class="step-title">Gentle Washing</div>
-      <p class="step-text">Each egg is dry-brushed and lightly rinsed with warm water. No chemicals, no bleach — we keep the natural bloom intact when possible.</p>
+    <div class="step reveal" style="transition-delay: 0.1s;">
+      <div class="step-num">2</div>
+      <h3 class="step-title">We Gather</h3>
+      <p class="step-text">We collect, wash, and box your eggs straight from the coop.</p>
     </div>
-    <div class="step reveal" style="transition-delay:0.3s">
-      <div class="step-num">📦</div>
-      <div class="step-title">Packed Fresh</div>
-      <p class="step-text">Sorted by size and packed into reusable cartons by 9am — marked with the date laid so you always know what you're getting.</p>
+    <div class="step reveal" style="transition-delay: 0.2s;">
+      <div class="step-num">3</div>
+      <h3 class="step-title">We Confirm</h3>
+      <p class="step-text">You'll get a confirmation when your order is packed and ready on the porch.</p>
     </div>
-    <div class="step reveal" style="transition-delay:0.45s">
-      <div class="step-num">🛒</div>
-      <div class="step-title">Ready by Noon</div>
-      <p class="step-text">Pick up from our roadside stand or front-porch honesty box, seven days a week. Truly farm-to-door.</p>
+    <div class="step reveal" style="transition-delay: 0.3s;">
+      <div class="step-num">4</div>
+      <h3 class="step-title">You Pickup</h3>
+      <p class="step-text">Swing by 27 Orchard Hill Road, grab your eggs, and leave cash in the box!</p>
     </div>
   </div>
 </section>
 
-<!-- FIND US -->
-<section id="findus">
+<section id="findus" class="reveal">
   <div class="findus-info reveal-left">
-    <span class="section-tag">Come Find Us</span>
-    <h2 class="section-title">Always Open,<br>Always Fresh</h2>
-    <p class="section-sub" style="margin-bottom:40px;">No appointment needed. Just stop by the stand — rain or shine, seven days a week.</p>
-
+    <span class="section-tag">Location & Info</span>
+    <h2 class="section-title">Swing By The Farm</h2>
+    <p class="section-sub" style="margin-bottom: 40px;">We operate on a simple, honor-system porch pickup. Order ahead to guarantee your eggs are waiting for you.</p>
+    
     <div class="findus-item">
       <div class="findus-icon">📍</div>
       <div>
-        <div class="findus-label">Roadside Stand</div>
-        <div class="findus-val">End of our driveway<br>123 Pasture Ln, Ithaca, NY 14850</div>
+        <div class="findus-label">Farm Address</div>
+        <div class="findus-val">27 Orchard Hill Road<br>Ithaca, NY</div>
       </div>
     </div>
     <div class="findus-item">
-      <div class="findus-icon">🕐</div>
+      <div class="findus-icon">⏰</div>
       <div>
-        <div class="findus-label">Hours</div>
-        <div class="findus-val">Daily — 7:00 AM until sold out<br><em style="font-size:0.9rem;color:var(--terracotta);">Usually gone by 1pm on weekends!</em></div>
+        <div class="findus-label">Pickup Hours</div>
+        <div class="findus-val">Monday - Sunday<br>8:00 AM - 7:00 PM</div>
       </div>
     </div>
     <div class="findus-item">
-      <div class="findus-icon">📞</div>
+      <div class="findus-icon">💵</div>
       <div>
-        <div class="findus-label">Call or Text</div>
-        <div class="findus-val">(607) 555-0134<br>Text ahead for weekly holds</div>
-      </div>
-    </div>
-    <div class="findus-item">
-      <div class="findus-icon">🥚</div>
-      <div>
-        <div class="findus-label">Also at</div>
-        <div class="findus-val">Ithaca Farmers Market — Saturdays<br>DeWitt Mall Food Co-op — Thursdays</div>
+        <div class="findus-label">Payment</div>
+        <div class="findus-val">Cash exact change in the lockbox,<br>or Venmo at pickup.</div>
       </div>
     </div>
   </div>
 
-  <div class="map-placeholder reveal-right">
-    <svg viewBox="0 0 460 400" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:100%;position:absolute;inset:0;">
-      <defs>
-        <linearGradient id="mapbg" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0%" stop-color="#E8F0D8"/>
-          <stop offset="100%" stop-color="#D4E4B8"/>
-        </linearGradient>
-      </defs>
-      <rect width="460" height="400" fill="url(#mapbg)"/>
-      <!-- Road grid -->
-      <g stroke="#C8D4A8" stroke-width="24" opacity="0.6">
-        <line x1="0" y1="200" x2="460" y2="200"/>
-        <line x1="230" y1="0" x2="230" y2="400"/>
-      </g>
-      <g stroke="#E8EDD8" stroke-width="12" opacity="0.5">
-        <line x1="0" y1="120" x2="460" y2="120"/>
-        <line x1="0" y1="300" x2="460" y2="300"/>
-        <line x1="130" y1="0" x2="130" y2="400"/>
-        <line x1="340" y1="0" x2="340" y2="400"/>
-      </g>
-      <!-- Trees -->
-      <g fill="#6A8C56" opacity="0.4">
-        <circle cx="60" cy="60" r="22"/>
-        <circle cx="95" cy="55" r="16"/>
-        <circle cx="380" cy="330" r="20"/>
-        <circle cx="410" cy="340" r="14"/>
-        <circle cx="50" cy="340" r="18"/>
-        <circle cx="400" cy="70" r="15"/>
-      </g>
-      <!-- Farm marker -->
-      <g transform="translate(210,160)">
-        <circle cx="20" cy="20" r="30" fill="var(--terracotta)" opacity="0.15"/>
-        <circle cx="20" cy="20" r="20" fill="var(--terracotta)"/>
-        <text x="20" y="26" text-anchor="middle" font-size="16" fill="white">🥚</text>
-        <polygon points="20,48 28,36 12,36" fill="var(--terracotta)"/>
-      </g>
-      <!-- Label -->
-      <rect x="148" y="218" width="124" height="32" rx="8" fill="white" opacity="0.92"/>
-      <text x="210" y="238" text-anchor="middle" font-family="Crimson Pro,serif" font-size="13" font-weight="600" fill="#2A1508">Eli's Eggs — Pasture Ln</text>
-      <!-- Scale -->
-      <g transform="translate(20,370)" opacity="0.5">
-        <line x1="0" y1="8" x2="60" y2="8" stroke="#5C6A40" stroke-width="2"/>
-        <line x1="0" y1="4" x2="0" y2="12" stroke="#5C6A40" stroke-width="2"/>
-        <line x1="60" y1="4" x2="60" y2="12" stroke="#5C6A40" stroke-width="2"/>
-        <text x="30" y="6" text-anchor="middle" font-family="Crimson Pro,serif" font-size="10" fill="#5C6A40">0.5 mi</text>
-      </g>
-    </svg>
-    <div style="position:relative;z-index:1;text-align:center;padding:20px;">
-      <a href="https://maps.google.com/?q=Ithaca,NY" target="_blank" class="btn-primary" style="font-size:0.95rem;padding:12px 28px;">
-        Open in Maps ↗
-      </a>
-    </div>
-  </div>
-</section>
-
-<!-- CONTACT -->
-<section id="contact">
-  <div class="reveal">
-    <span class="section-tag">Get in Touch</span>
-    <h2 class="section-title">Reserve Your Eggs</h2>
-    <p class="section-sub" style="margin:0 auto;">Want to guarantee your dozen before they sell out? Send us a message and we'll hold them for you.</p>
-  </div>
-  <form class="contact-form reveal" onsubmit="handleSubmit(event)">
-    <div class="form-row">
+  <div class="map-placeholder reveal-right" id="contact">
+    <span>Order Form</span>
+    <form class="contact-form" id="egg-order-form" style="width: 80%; margin: 0 auto; padding-bottom: 20px;">
       <div class="form-group">
         <label for="name">Your Name</label>
-        <input type="text" id="name" placeholder="Eli Neighbor" required>
+        <input type="text" id="name" placeholder="John Doe" required>
       </div>
       <div class="form-group">
-        <label for="phone">Phone / Text</label>
-        <input type="tel" id="phone" placeholder="(607) 555-0100">
+        <label for="email">Your Email / Phone</label>
+        <input type="text" id="email" placeholder="Contact info" required>
       </div>
-    </div>
-    <div class="form-group">
-      <label for="email">Email Address</label>
-      <input type="email" id="email" placeholder="you@email.com">
-    </div>
-    <div class="form-row">
       <div class="form-group">
-        <label for="variety">Egg Variety</label>
-        <select id="variety">
-          <option value="">Choose size…</option>
-          <option>Half Dozen (6 eggs)</option>
-          <option>Dozen (12 eggs)</option>
+        <label for="order-details">What would you like?</label>
+        <select id="order-details" required>
+          <option value="" disabled selected>Select your eggs...</option>
+          <option value="1 Dozen ($6)">1 Dozen ($6)</option>
+          <option value="2 Dozen ($12)">2 Dozen ($12)</option>
+          <option value="Half Dozen ($3.50)">Half Dozen ($3.50)</option>
+          <option value="Baker's Flat ($14)">Baker's Flat ($14)</option>
         </select>
       </div>
       <div class="form-group">
-        <label for="qty">Quantity</label>
-        <select id="qty">
-          <option>1 order</option>
-          <option>2 orders</option>
-          <option>3+ orders</option>
-        </select>
+        <label for="notes">Pickup Day / Notes</label>
+        <textarea id="notes" placeholder="e.g. Coming by tomorrow morning!"></textarea>
       </div>
-    </div>
-    <div class="form-group">
-      <label for="msg">Message (optional)</label>
-      <textarea id="msg" placeholder="Any notes for your order — preferred pickup day, special requests, etc."></textarea>
-    </div>
-    <button type="submit" class="btn-primary" style="width:100%;justify-content:center;cursor:none;" id="submit-btn">
-      Reserve My Eggs 🥚
-    </button>
-    <div id="success-msg" style="display:none;background:rgba(61,92,47,0.12);border:1.5px solid var(--green);color:var(--green);padding:16px 24px;border-radius:10px;font-family:'Caveat',cursive;font-size:1.3rem;text-align:center;font-weight:700;">
-      ✅ Order received! Eli will text you to confirm by tomorrow morning. 🐔
-    </div>
-  </form>
+      <button type="submit" class="btn-primary submit-btn">Send Order</button>
+    </form>
+  </div>
 </section>
 
-<!-- FOOTER -->
 <footer>
   <div class="footer-top">
     <div class="footer-brand">
-      <a href="#" class="nav-logo" style="margin-bottom:16px;display:flex;"><span class="egg-icon">🥚</span> Eli's Eggs</a>
-      <p class="footer-desc">Pasture-raised eggs from our family farm to your family table. Ithaca, New York. Est. 2013.</p>
+      <a href="#" class="nav-logo"><span class="egg-icon">🥚</span> Eli's Eggs</a>
+      <p class="footer-desc">Providing the Ithaca community with pasture-raised, ethically farmed eggs. Fresh from our family to yours.</p>
     </div>
     <div class="footer-col">
       <h4>Quick Links</h4>
       <ul>
-        <li><a href="#about">Our Farm</a></li>
-        <li><a href="#eggs">Our Eggs</a></li>
-        <li><a href="#process">How It Works</a></li>
-        <li><a href="#findus">Find Us</a></li>
-        <li><a href="#contact">Order Now</a></li>
+        <li><a href="#about">Our Story</a></li>
+        <li><a href="#eggs">Shop Eggs</a></li>
+        <li><a href="#process">How it Works</a></li>
       </ul>
     </div>
     <div class="footer-col">
-      <h4>Contact</h4>
+      <h4>Visit Us</h4>
       <ul>
-        <li><a href="tel:6075550134">(607) 555-0134</a></li>
-        <li><a href="mailto:eli@eliseggs.com">eli@eliseggs.com</a></li>
-        <li><a href="#">123 Pasture Ln</a></li>
-        <li><a href="#">Ithaca, NY 14850</a></li>
+        <li>27 Orchard Hill Road</li>
+        <li>Ithaca, NY</li>
+        <li>Porch Pickup Daily</li>
       </ul>
     </div>
   </div>
   <div class="footer-bottom">
-    <p class="footer-copy">© 2025 Eli's Eggs. Made with <span class="footer-heart">♥</span> on the farm.</p>
-    <div class="footer-socials">
-      <a href="#" class="social-btn" aria-label="Instagram">📸</a>
-      <a href="#" class="social-btn" aria-label="Facebook">👍</a>
-      <a href="#" class="social-btn" aria-label="Email">✉️</a>
-    </div>
+    <div class="footer-copy">&copy; 2026 Eli's Eggs. All rights reserved. Made with <span class="footer-heart">♥</span> in Ithaca.</div>
   </div>
 </footer>
 
 <script>
-  // ── CURSOR
+  // Custom Cursor
   const cursor = document.getElementById('cursor');
-  const dot = document.getElementById('cursor-dot');
-  let mx = -100, my = -100, cx = -100, cy = -100;
-  document.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; });
-  function animateCursor() {
-    cx += (mx - cx) * 0.14;
-    cy += (my - cy) * 0.14;
-    cursor.style.left = cx + 'px';
-    cursor.style.top = cy + 'px';
-    dot.style.left = mx + 'px';
-    dot.style.top = my + 'px';
-    requestAnimationFrame(animateCursor);
-  }
-  animateCursor();
-  document.querySelectorAll('a, button, .egg-card, .testimonial-card, .feature-pill, .btn-small, .btn-primary, .btn-secondary, input, textarea, select').forEach(el => {
+  const cursorDot = document.getElementById('cursor-dot');
+  
+  window.addEventListener('mousemove', (e) => {
+    cursor.style.transform = `translate(${e.clientX}px, ${e.clientY}px) translate(-50%, -50%)`;
+    cursorDot.style.transform = `translate(${e.clientX}px, ${e.clientY}px) translate(-50%, -50%)`;
+  });
+
+  document.querySelectorAll('a, button, input, textarea, select').forEach(el => {
     el.addEventListener('mouseenter', () => cursor.classList.add('hovering'));
     el.addEventListener('mouseleave', () => cursor.classList.remove('hovering'));
   });
 
-  // ── NAV SCROLL
-  const navbar = document.getElementById('navbar');
+  // Navbar Scroll
+  const nav = document.getElementById('navbar');
   window.addEventListener('scroll', () => {
-    navbar.classList.toggle('scrolled', window.scrollY > 60);
+    if (window.scrollY > 50) nav.classList.add('scrolled');
+    else nav.classList.remove('scrolled');
   });
 
-  // ── INTERSECTION OBSERVER for scroll reveals
+  // Scroll Reveals
   const reveals = document.querySelectorAll('.reveal, .reveal-left, .reveal-right');
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
+  const revealOnScroll = () => {
+    const windowHeight = window.innerHeight;
+    const elementVisible = 100;
+    reveals.forEach(reveal => {
+      const elementTop = reveal.getBoundingClientRect().top;
+      if (elementTop < windowHeight - elementVisible) {
+        reveal.classList.add('visible');
       }
     });
-  }, { threshold: 0.12 });
-  reveals.forEach(el => observer.observe(el));
+  };
+  window.addEventListener('scroll', revealOnScroll);
+  revealOnScroll(); // init
 
-  // ── COUNTER ANIMATION
-  function animateCounter(el, target, duration = 1800) {
-    const start = performance.now();
-    function update(now) {
-      const elapsed = now - start;
-      const progress = Math.min(elapsed / duration, 1);
-      const eased = 1 - Math.pow(1 - progress, 3);
-      el.textContent = Math.round(eased * target) + (el.dataset.suffix || '');
-      if (progress < 1) requestAnimationFrame(update);
-    }
-    requestAnimationFrame(update);
-  }
-
-  const statsSection = document.getElementById('stats');
-  let counted = false;
-  const statsObserver = new IntersectionObserver((entries) => {
-    if (entries[0].isIntersecting && !counted) {
-      counted = true;
-      document.querySelectorAll('.stat-num').forEach(el => {
-        animateCounter(el, parseInt(el.dataset.target));
-      });
-    }
-  }, { threshold: 0.5 });
-  statsObserver.observe(statsSection);
-
-  // ── PARALLAX on hero
-  window.addEventListener('scroll', () => {
-    const scrolled = window.scrollY;
-    const heroBg = document.querySelector('.hero-bg');
-    if (heroBg) heroBg.style.transform = `translateY(${scrolled * 0.25}px)`;
-    const heroVisual = document.querySelector('.hero-visual');
-    if (heroVisual) heroVisual.style.transform = `translateY(${scrolled * 0.12}px)`;
-  });
-
-  // ── FORM SUBMIT
-  function handleSubmit(e) {
+  // Discord Webhook Form Submission
+  document.getElementById('egg-order-form').addEventListener('submit', function(e) {
     e.preventDefault();
-    const btn = document.getElementById('submit-btn');
-    btn.textContent = 'Sending…';
-    btn.disabled = true;
-    btn.style.opacity = '0.7';
-    setTimeout(() => {
-      btn.style.display = 'none';
-      document.getElementById('success-msg').style.display = 'block';
-    }, 1200);
-  }
-
-  // ── Stagger egg card reveals
-  document.querySelectorAll('.egg-card').forEach((card, i) => {
-    card.style.transitionDelay = (i * 0.1) + 's';
+    
+    const btn = this.querySelector('.submit-btn');
+    const originalText = btn.innerText;
+    btn.innerText = 'Sending Order...';
+    
+    const name = document.getElementById('name').value;
+    const email = document.getElementById('email').value;
+    const orderDetails = document.getElementById('order-details').value;
+    const notes = document.getElementById('notes').value;
+    
+    const webhookUrl = "https://discord.com/api/webhooks/1494134920409518262/0psSsZZvFwlDqy64gKNeU14SVXy9kZbRVxjIhHmCGdAad-VDG-kHFOhYTSHJm2b6SQTY";
+    
+    const payload = {
+      content: `**🥚 New Egg Order!**\n\n**Name:** ${name}\n**Contact:** ${email}\n**Order:** ${orderDetails}\n**Notes:** ${notes || 'None'}\n\n*Pickup Location: 27 Orchard Hill Road, Ithaca NY*`
+    };
+    
+    fetch(webhookUrl, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(payload)
+    })
+    .then(response => {
+      if(response.ok) {
+        btn.innerText = 'Order Sent! 🎉';
+        this.reset();
+        setTimeout(() => { btn.innerText = originalText; }, 3000);
+      } else {
+        btn.innerText = 'Error! Try Again';
+        setTimeout(() => { btn.innerText = originalText; }, 3000);
+      }
+    })
+    .catch(error => {
+      btn.innerText = 'Error! Try Again';
+      setTimeout(() => { btn.innerText = originalText; }, 3000);
+    });
   });
 </script>
 </body>
